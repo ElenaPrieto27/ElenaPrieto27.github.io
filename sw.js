@@ -5,7 +5,7 @@ const CAHCE_INMUTABLE = 'cache_inmutable_v1';
 const app_shell = [
     './index.html',
     './css/style.css',
-    './images/favicon.icon',
+    './favicon.icon',
     './js/app.js',
     './images/avs/img1.jpg',
     './js/libs/jquery.js'];
