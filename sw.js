@@ -13,7 +13,7 @@ self.addEventListener('install', event => {
         cache.addAll(app_shell);
     });
 
-    const cacheInmutables = cahces.open(CAHCE_INMUTABLE).then( cache => {
+    const cacheInmutables = caches.open(CAHCE_INMUTABLE).then( cache => {
         cache.addAll(app_inmutable);
     });
 
@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
     const respuesta = caches.match(event.request).then( res => {
         if(res){return res;}
         else{
-            return fetch(e.request).then(newRes => {
+            return fetch(event.request).then(newRes => {
                 //Agregar en el directorio /js un archivo llamdado sw-acces.js
                 //y programar la funcion actualizaCacheDinamico, para tener mas limpio el proyecto.
                 return actualizaCacheDinamico(CACHE_DYNAMIC, event.request, newRes);
