@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
         cache.addAll(app_inmutable);
     });
 
-    event.waitUnitil(Promise.all([cacheApp,cacheInmutables]));
+    event.waitUntil(Promise.all([cacheApp,cacheInmutables]));
 
 });
 
