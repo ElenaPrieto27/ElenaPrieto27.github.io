@@ -1,3 +1,4 @@
+/*
 const CACHE_NAME = 'cache_1';
 const CACHE_DYNAMIC = 'cache_dinamico_v1';
 const CAHCE_INMUTABLE = 'cache_inmutable_v1';
@@ -22,3 +23,15 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
     
 })
+*/
+
+
+var url = window.location.href; //obtenemos todo el url
+var pwaLocation = 'https://elenaprieto27.github.io/sw.js'; //path donde se encuentra el sw en GitHub
+
+if(navigator.serviceWorker){
+    if(url.includes('localhost')){
+        pwaLocation = '/sw.js';
+    }
+navigator.serviceWorker.register(pwaLocation);
+}
