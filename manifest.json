@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "icons": [{
         "src": "/images/icons/github.png",
-        "type": "images/png",
+        "type": "image/png",
         "sizes":"512x512"
     }],
     "theme_color": "#808080"
