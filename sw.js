@@ -34,6 +34,7 @@ self.addEventListener('activate', event => {
     
 });
 
+//Fetch
 self.addEventListener('fetch', event => {
     const respuesta = caches.match(event.request).then( res => {
         if(res){return res;}
@@ -46,19 +47,6 @@ self.addEventListener('fetch', event => {
         }
     });
 });
-
-function actualizaCacheDinamico(dynamicCache, request, response){
-    if(response.ok){
-        //la respuesta tiene data y se debe almacaenar en cache
-        return caches.open(dynamicCache).then(cache => {
-            cache.put(request,response.clone() );
-            return cache.clone();
-        });
-    }else{//si no viene nda en la respuesta
-        return response;
-    }
-}
-
 
 importScripts('js/sw-acces.js')
 
