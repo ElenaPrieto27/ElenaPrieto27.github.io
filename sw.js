@@ -13,15 +13,13 @@ const APP_SHELL = [
     '/',
     'index.html',
     'css/style.css',
-    'images/avs/img1.jpg',
-    'js/app.js',    
-    'js/sw-acces.js'  
+    //'images/avs/img1.jpg',
+    'js/app.js'
 ];
 const APP_SHELL_INMUTABLE = [   
     'https://fonts.googleapis.com/css?family=Quicksand:300,400',
     'https://fonts.googleapis.com/css?family=Lato:400,300',
     'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-    'css/style.css',
     'libs/jquery.js',
     'http://www.croop.cl/UI/twitter/images/carl.jpg',
     'http://www.croop.cl/UI/twitter/images/russel.jpg',
