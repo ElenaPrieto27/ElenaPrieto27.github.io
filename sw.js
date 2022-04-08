@@ -1,39 +1,46 @@
-const STATIC_CACHE = 'static_1';
-const CACHE_DYNAMIC = 'cache_dinamico_v1';
-const CAHCE_INMUTABLE = 'cache_inmutable_v1';
+//Archivo sw.js
+//Agregar la referencia al archivo js/sw-acceces.js
 
-const app_shell = [
+importScripts('js/sw-acces.js');
+
+//Archivo sw.js
+//1. Determinar el contenido de los caches de la PWA
+const STATIC_CACHE = 'static-v1';
+const DYNAMIC_CACHE = 'dynamic-v1';
+const INMUTABLE_CACHE = 'inmutable-v1';
+const APP_SHELL = [
+    '/',
     './index.html',
     './css/style.css',
-    './favicon.icon',
-    './js/app.js',
+    './favicon.ico',
     './images/avs/img1.jpg',
-    './js/libs/jquery.js'
+    './js/app.js',    
+    './js/sw-acces.js'  
 ];
-
-const app_inmutable = [
+const APP_SHELL_INMUTABLE = [   
     'https://fonts.googleapis.com/css?family=Quicksand:300,400',
     'https://fonts.googleapis.com/css?family=Lato:400,300',
-    'https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css',
-    'https://code.jquery.com/jquery-3.6.0.min.js'
+    'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
+    'css/style.css',
+    'libs/jquery.js'
 ];
 
+//Archivo sw.js
+//2. Hacer la instalación del sw, cargando los caches.
 
-//Install
 self.addEventListener('install', event => {
-    const cacheApp = caches.open(STATIC_CACHE).then(cache => {
-        cache.addAll(app_shell);
-    });
+    const cacheStatic = caches.open(STATIC_CACHE).then(cache => {
+         cache.addAll(APP_SHELL);
+     });
+     const cacheInmutable = caches.open(INMUTABLE_CACHE).then(cache => {
+         cache.addAll(APP_SHELL_INMUTABLE);
+     });
+     event.waitUntil(Promise.all([cacheStatic,cacheInmutable]));
+ });
 
-    const cacheInmutables = caches.open(CAHCE_INMUTABLE).then( cache => {
-        cache.addAll(app_inmutable);
-    });
+ //Archivo sw.js
+//3. Hacer la activación del sw, eliminando las versiones antiguas de cache.
 
-    event.waitUntil(Promise.all([cacheApp,cacheInmutables]));
-
-});
-
-//Activate
 self.addEventListener('activate', event => {
     const respuesta = caches.keys().then(keys =>{
         keys.forEach(key => {
@@ -43,10 +50,12 @@ self.addEventListener('activate', event => {
         });
     });
     event.waitUntil(respuesta);
-    
 });
 
-//Fetch
+//Archivo sw.js
+//3. Hacer la estrategia de cache, este ejemplo un marco referencial, cada equipo determinará 
+//la estrategia adecuada para su sitio web, esto conforme a las estrategias trabajadas en clase.
+
 self.addEventListener('fetch', event => {
     const respuesta = caches.match(event.request).then( res => {
         if(res){return res;}
@@ -54,13 +63,8 @@ self.addEventListener('fetch', event => {
             return fetch(event.request).then(newRes => {
                 //Agregar en el directorio /js un archivo llamdado sw-acces.js
                 //y programar la funcion actualizaCacheDinamico, para tener mas limpio el proyecto.
-                return actualizaCacheDinamico(CACHE_DYNAMIC, event.request, newRes);
+                return actualizaCacheDinamico(DYNAMIC_CACHE, event.request, newRes);
             });
         }
     });
 });
-
-importScripts('js/sw-acces.js')
-
-
-
