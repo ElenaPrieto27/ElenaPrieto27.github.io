@@ -8,6 +8,7 @@ importScripts('js/sw-acces.js');
 const STATIC_CACHE = 'static-v1';
 const DYNAMIC_CACHE = 'dynamic-v1';
 const INMUTABLE_CACHE = 'inmutable-v1';
+
 const APP_SHELL = [
     '/',
     'index.html',
@@ -21,7 +22,10 @@ const APP_SHELL_INMUTABLE = [
     'https://fonts.googleapis.com/css?family=Lato:400,300',
     'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
     'css/style.css',
-    'libs/jquery.js'
+    'libs/jquery.js',
+    'http://www.croop.cl/UI/twitter/images/carl.jpg',
+    'http://www.croop.cl/UI/twitter/images/russel.jpg',
+    'http://www.croop.cl/UI/twitter/images/doug.jpg'
 ];
 
 //Archivo sw.js
