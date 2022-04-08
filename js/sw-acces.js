@@ -7,7 +7,7 @@ function actualizaCacheDinamico(dynamicCache, request, response){
             
         });
 
-        return dynamicCache.clone();
+        return dynamicCache;
     }else{//si no viene nda en la respuesta
         return response;
     }
