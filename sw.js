@@ -10,12 +10,11 @@ const DYNAMIC_CACHE = 'dynamic-v1';
 const INMUTABLE_CACHE = 'inmutable-v1';
 const APP_SHELL = [
     '/',
-    './index.html',
-    './css/style.css',
-    './favicon.ico',
-    './images/avs/img1.jpg',
-    './js/app.js',    
-    './js/sw-acces.js'  
+    'index.html',
+    'css/style.css',
+    'images/avs/img1.jpg',
+    'js/app.js',    
+    'js/sw-acces.js'  
 ];
 const APP_SHELL_INMUTABLE = [   
     'https://fonts.googleapis.com/css?family=Quicksand:300,400',
